@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { MovieForm } from '../components';
@@ -57,7 +57,11 @@ class EditMovie extends Component {
     }
 
     if (status === 'loading') {
-      return <p>Carregando...</p>;
+      return (
+        <div className="load-edit">
+          <p>Carregando...</p>
+        </div>
+      );
     }
 
     return (

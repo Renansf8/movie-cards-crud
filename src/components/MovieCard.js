@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi';
 import '../styles/movieCard.css';
 
 class MovieCard extends React.Component {
@@ -15,7 +16,10 @@ class MovieCard extends React.Component {
         <div className="card-content">
           <h3>{title}</h3>
           <p>{storyline}</p>
-          <Link to={`/movies/${id}`}>VER DETALHES</Link>
+          <div className="link">
+            <Link to={`/movies/${id}`}>VER DETALHES</Link>
+            <FiArrowRight />
+          </div>
         </div>
       </div>
     );

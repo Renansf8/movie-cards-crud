@@ -3,7 +3,7 @@
 }
 
 .movie-card {
-  max-width: 260px;
+  max-width: 230px;
   height: 340px;
   margin: 8px;
   border: 1px solid #555555;
@@ -13,11 +13,12 @@
 }
 
 .movie-card:hover {
-  box-shadow: 0 0 15px #292828;
+  box-shadow: 0 0 15px #1364c0;
 }
 
 .movie-card img {
-  width: 260px;
+  width: 230px;
+  height: 140px;
   border-radius: 8px 8px 0 0;
 }
 
@@ -40,7 +41,7 @@
 
 .card-content a:hover {
   color: #065ab9;
-  transform: translateX(5px);
+  /* transform: translateX(5px); */
 }
 
 .card-content {
@@ -49,4 +50,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  width: 160px;
+}
+
+.link svg {
+  color: #0077ff;
+  margin-left: 8px;
+}
+
+.link:hover {
+  transform: translateX(5px);
 }

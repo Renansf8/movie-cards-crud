@@ -1,0 +1,16 @@
+header {
+  background-color: #36373b;
+  padding: 8px;
+  text-align: center;
+  color: #0077ff;
+  margin-bottom: 32px;
+  font-family: 'Viga', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+header svg {
+  width: 40px;
+  height: 40px;
+  margin-right: 16px;
+}
