@@ -28,8 +28,8 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
-    const { createMovie } = movieAPI;
-    createMovie(updatedMovie);
+    const { updateMovie } = movieAPI;
+    updateMovie(updatedMovie);
     this.setState({
       movie: updatedMovie,
       shouldRedirect: true,

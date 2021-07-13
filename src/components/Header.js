@@ -7,7 +7,7 @@ class Header extends React.Component {
     return (
       <header>
         <MdLocalMovies />
-        <h1>Movie Cards - CRUD</h1>
+        <h1>Movie Card - CRUD</h1>
       </header>
     );
   }

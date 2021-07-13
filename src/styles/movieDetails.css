@@ -6,7 +6,6 @@ body {
   display: flex;
   flex-direction: column;
   max-width: 600px;
-  /* align-items: center; */
   margin: 32px auto;
   background-color: #36373b;
   border-radius: 8px;
@@ -14,6 +13,7 @@ body {
 
 .movie-details img {
   border-radius: 8px 8px 0 0;
+  height: 400px;
 }
 
 .movie-details h4 {

@@ -15,11 +15,14 @@ class MovieList extends Component {
 
     this.takeMovies = this.takeMovies.bind(this);
     this.searchTextChange = this.searchTextChange.bind(this);
+    this.favoriteMovie = this.favoriteMovie.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       movies: [],
       loading: true,
       searchText: '',
+      bookmarkedOnly: '',
     };
   }
 
@@ -44,20 +47,38 @@ class MovieList extends Component {
     });
   }
 
-  filterMovie(movies) {
-    const { searchText } = this.state;
-    const filtered = movies.map((movie) => {
-      const { title } = movie;
-      if (title.toLowerCase().includes(searchText)) {
-        return movie;
-      }
-      return undefined;
+  handleChange({ target }) {
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [target.name]: value,
     });
-    return filtered.filter((obj) => obj !== undefined);
+  }
+
+  favoriteMovie(bookmarked, id) {
+    const { movies } = this.state;
+    const bookMarkedChange = movies.find(
+      (movie) => Number(movie.id) === Number(id)
+    );
+    bookMarkedChange.bookmarked = bookmarked;
+    movieAPI.updateMovie(bookMarkedChange);
+  }
+
+  filterMovie(movies) {
+    const { searchText, bookmarkedOnly } = this.state;
+    const filtered = movies.filter((movie) => {
+      const searchMovie = movie.title.toLowerCase().includes(searchText);
+      return searchMovie;
+    });
+
+    const favorite = bookmarkedOnly
+      ? filtered.filter((movie) => movie.bookmarked)
+      : filtered;
+
+    return favorite;
   }
 
   render() {
-    const { movies, loading, searchText } = this.state;
+    const { movies, loading, searchText, bookmarkedOnly } = this.state;
 
     if (loading === true)
       return (
@@ -71,11 +92,17 @@ class MovieList extends Component {
         <Header />
         <SearchBar
           searchText={searchText}
-          handleTextChange={this.searchTextChange}
+          handleTextChange={this.handleChange}
+          bookMarkedOnly={bookmarkedOnly}
+          bookMarkedOnlyChange={this.handleChange}
         />
         <div className="list">
           {this.filterMovie(movies).map((movie) => (
-            <MovieCard key={movie.title} movie={movie} />
+            <MovieCard
+              key={movie.title}
+              movie={movie}
+              onClick={this.favoriteMovie}
+            />
           ))}
         </div>
         <div className="add-movie">
